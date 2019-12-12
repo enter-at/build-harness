@@ -12,7 +12,7 @@
 {{- defineDatasource "config" .Env.README_YAML | regexp.Replace ".*" "" -}}
 {{- defineDatasource "includes" .Env.README_INCLUDES | regexp.Replace ".*" "" }}
 
-[![enter-at][logo]][website]
+[<img src="https://res.cloudinary.com/enter-at/image/upload/v1576145406/static/logo-svg.svg" alt="enter-at" width="100">][website]
 
 # {{(ds "config").name}}{{ if gt (len (ds "config").name) 34 }}{{ print "\n\n" }}{{ end }}{{ if has (ds "config") "badges" }}{{- range $badge := (ds "config").badges -}}{{ printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}{{ end }}{{ end }}
 
@@ -173,5 +173,4 @@ See [LICENSE](LICENSE) for full details.
 {{ end }}
 {{ end }}
 
-  [logo]: https://res.cloudinary.com/enter-at/image/upload/c_scale,w_163/v1576145406/static/logo-svg.svg
   [website]: https://github.com/enter-at
