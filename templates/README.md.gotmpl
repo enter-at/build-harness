@@ -12,9 +12,14 @@
 {{- defineDatasource "config" .Env.README_YAML | regexp.Replace ".*" "" -}}
 {{- defineDatasource "includes" .Env.README_INCLUDES | regexp.Replace ".*" "" }}
 
+
 [<img src="https://res.cloudinary.com/enter-at/image/upload/v1576145406/static/logo-svg.svg" alt="enter-at" width="100">][website]
 
-# {{(ds "config").name}}{{ if gt (len (ds "config").name) 34 }}{{ print "\n\n" }}{{ end }}{{ if has (ds "config") "badges" }}{{- range $badge := (ds "config").badges -}}{{ printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}{{ end }}{{ end }}
+
+# {{(ds "config").name}}
+{{ print "\n\n" }}
+
+{{ if has (ds "config") "badges" }}{{- range $badge := (ds "config").badges -}}{{ printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}{{ end }}{{ end }}
 
 {{ if has (ds "config") "logo" }}
 ![{{(ds "config").name}}]({{ (ds "config").logo }})
