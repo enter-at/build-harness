@@ -73,7 +73,7 @@ Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest re
 
 ## Share the Love
 
-Like this project? 
+Like this project?
 Please give it a ★ on [our GitHub]({{ printf "https://github.com/%s" (ds "config").github_repo}})!
 
 
@@ -158,8 +158,9 @@ See [LICENSE](LICENSE) for full details.
 {{ if has (datasource "config") "contributors" }}
 ### Contributors
 
-| {{ range $contributor := (ds "config").contributors }}{{ printf " [![%s][%s_avatar]][%s_homepage]<br/>[%s][%s_homepage] |" $contributor.name $contributor.github $contributor.github $contributor.name $contributor.github}}{{ end }}
-|{{- range $contributor := (ds "config").contributors -}}---|{{ end }}
+{{ range $contributor := (ds "config").contributors }}
+{{ printf "[![%s][%s_avatar]][%s_homepage]" $contributor.name $contributor.github $contributor.github }}
+{{ end }}
 
 {{ range $contributor := (ds "config").contributors -}}
 {{- if has $contributor "homepage" }}
@@ -169,7 +170,7 @@ See [LICENSE](LICENSE) for full details.
 {{ end -}}
 {{ if has $contributor "avatar" }}{{ printf "  [%s_avatar]: %s" $contributor.github $contributor.avatar }}
 {{ else -}}
-{{ printf "  [%s_avatar]: https://res.cloudinary.com/enter-at/image/fetch/w_100,h_100,c_thumb/https://github.com/%s.png" $contributor.github $contributor.github }}
+{{ printf "  [%s_avatar]: https://res.cloudinary.com/enter-at/image/fetch/f_png,r_max,w_100,h_100,c_thumb/https://github.com/%s.png" $contributor.github $contributor.github }}
 {{- end }}
 {{ end }}
 {{ end }}
