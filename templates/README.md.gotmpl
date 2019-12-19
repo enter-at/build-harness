@@ -64,6 +64,12 @@ Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest re
 {{(ds "config").examples }}
 {{ end }}
 
+{{ if has (ds "config") "api" }}
+## API
+
+{{(ds "config").api }}
+{{ end }}
+
 {{ if has (ds "config") "include" }}
 {{ range $file := (datasource "config").include -}}
 {{ (include "includes" $file) }}
